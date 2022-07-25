@@ -1,3 +1,17 @@
+### Live Link:https://car-repair-company.web.app/
+
+### Anyone can create an account
+
+### An Admin can make an admin
+
+### Admin Email:test@gmail.com
+
+### Password:123456
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
