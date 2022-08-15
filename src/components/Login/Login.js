@@ -9,8 +9,6 @@ import './Login.css';
 
 
 const Login = () => {
-    // DynamicTitle('Fresh valey || Login');
-  
   const [loginData, setLoginData] = useState({});
   const {  loginUser, signInWithGoogle } = useAuth();
 

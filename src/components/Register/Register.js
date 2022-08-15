@@ -8,7 +8,6 @@ import './Register.css';
 
 
 const Register = () => {
-//   DynamicTitle('Fresh valey || Register');
   const [loginData, setLoginData] = useState({});
   const navigate = useNavigate();
   const { user, registerUser, isLoading, authError } = useAuth();

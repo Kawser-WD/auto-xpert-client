@@ -4,7 +4,7 @@ import useAuth from '../../../../hooks/useFirebase';
 import Sidebar from '../Sidbar/Sidebar';
 
 const Orderlist = () => {
-    const { user } = useAuth();
+    const { user, admin } = useAuth();
     const [orders,setOrders] = useState([])
     useEffect(()=>{
         fetch(`https://fast-tundra-26800.herokuapp.com/order?email=${user.email}`)
@@ -17,23 +17,6 @@ const Orderlist = () => {
             <div className="col-md-10 p-4 pr-5" style={{marginTop:'100px', position: "absolute", right: 0}}>
             <h1 className="d-flex justify-content-center">Your Order List</h1>
             <div>
-            {/* {
-                    orders.map(order=> <table class="table">
-                    
-                    <tbody>
-                        <tr>
-                        <th scope="row"></th>
-                        <td>{order.name}</td>
-                        <td>{order.price}</td>
-                        <td>{order.payment ?
-                                    'Paid' :
-                                    <Link to={`/payment/${order._id}`}><button>Pay</button></Link>
-                                }
-                        </td>
-                        </tr>
-                    </tbody>
-                    </table>)
-            } */}
             <table className="table table-borderless table-hover">
                 <thead className='table-light'>
                       <tr>
@@ -48,12 +31,22 @@ const Orderlist = () => {
                     return(
                         <tr key={key}>
                         <td>{order.name}</td>
-                        <td>{order.price}</td>
+                        <td>{order.price}$</td>
+
+                      {
+                        admin ?
                         <td>{order.payment ?
-                                    'Paid' :
-                                    <Link to={`/payment/${order._id}`}><button className='btn' style={{backgroundColor:'#30336b', color:'#fff'}}>Pay</button></Link>
-                                }
-                        </td>
+                            'Paid' :
+                           'Unpaid'
+                        }
+                </td>
+                :
+                <td>{order.payment ?
+                    'Paid' :
+                    <Link to={`/payment/${order._id}`}><button className='btn' style={{backgroundColor:'#30336b', color:'#fff'}}>Pay</button></Link>
+                }
+        </td>
+                      }
                         </tr>
                     )
                 })

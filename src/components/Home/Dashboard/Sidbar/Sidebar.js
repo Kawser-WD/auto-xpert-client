@@ -44,14 +44,14 @@ function Sidebar(props) {
             <Link to="/orderlist"  style={{textDecoration:'none', color:'#130f40', fontWeight:'bold'}}><Button color="inherit">Order List</Button></Link>
             <Link to="/reviews"  style={{textDecoration:'none',color:'#130f40', fontWeight:'bold'}}><Button color="inherit">Review</Button></Link>
             
-            {/* {
-                admin &&  */}
+             {
+                admin &&  
           <Box>
               <Link to="/addservice"  style={{textDecoration:'none',color:'#130f40', fontWeight:'bold'}}><Button color="inherit">Add Service</Button></Link>
             <Link to="/manageservice"  style={{textDecoration:'none',color:'#130f40', fontWeight:'bold'}}><Button color="inherit">Manage Service</Button></Link>
             <Link to="/makeadmin"  style={{textDecoration:'none',color:'#130f40', fontWeight:'bold'}}><Button color="inherit">Make Admin</Button></Link>
           </Box>
-            {/* } */}
+            } 
            </Box>
         </div>
     );

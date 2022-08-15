@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
+import { toast, Toaster } from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router';
 import useAuth from '../../../../hooks/useFirebase';
 import Sidebar from '../Sidbar/Sidebar';
@@ -23,7 +24,6 @@ const Order = () => {
             price,
             email:user.email
         };
-    // const products = { email:user.email, price:info, name:name}
         fetch('https://fast-tundra-26800.herokuapp.com/orderService', {
             method: 'POST',
             headers:{
@@ -34,13 +34,17 @@ const Order = () => {
         .then(res=> res.json())
         .then(result =>{
             if(result){
-                alert('order placed successfully');
               navigate('/orderlist')
             }
         })
     }
+    const notify = () => toast.success('Booking Successful!!!',{duration: 4000,});
     return (
         <div className="container-fluid row">
+                <Toaster
+         position="top-center"
+         reverseOrder={false}
+        />
             <Sidebar></Sidebar>
             <div className="col-md-10 p-4 pr-5" style={{marginTop:'150px', position: "absolute", right: 0 }}>
 
@@ -60,7 +64,7 @@ const Order = () => {
                 <input style={{width:'300px', height:'50px'}} defaultValue={price} {...register("price")} />
                 <br/><br/>
                 <br/>
-                <input type="submit" className='btn' style={{backgroundColor:'#30336b', color:'#fff'}} />
+                <input type="submit" onClick={notify} className='btn' style={{backgroundColor:'#30336b', color:'#fff'}} />
             </form>
         </div>
         </div>
